@@ -1,0 +1,19 @@
+FROM node:alpine
+# 베이스 이미지
+
+WORKDIR /app
+# 해당 어플의 소스 코드 위치
+
+COPY package.json ./
+# 소스코드가 바뀔 때 마다 종속성까지 다시 복사를 해주는 수고를 하지 않기 위해 먼저 종속성 목록을 담고 있는 파일 복사
+
+RUN npm install
+# package.json에 명시된 종속성 다운
+
+COPY ./ ./
+# 모든 소스코드를 WORKDIR로 복사
+
+CMD [ "npm", "run", "start" ]
+# 이 컨테이너가 실행될 때 같이 실행할 명령어 지정
+
+# 빌드되지 않은 정적파일들로 개발 서버를 통해 단독(standalone)으로 실행되는 환경

@@ -1,0 +1,7 @@
+FROM node:alpine
+WORKDIR /app
+COPY ./package.json ./
+RUN npm install
+COPY . .
+CMD [ "npm", "run", "dev" ]
+# dev는 nodemon을 사용하여 소스 변경시 재시작 없이 반영되도록 nodemon을 활용
