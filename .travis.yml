@@ -5,8 +5,8 @@ sudo: required
 services:
   - docker
 
-before_install:
-  - docker build -t hyoukim/docker-fullstack-app -f ./frontend/Dockerfile.dev
+before_install: # test script 수행을 위한 준비
+  - docker build -t hyoukim/react-test-app -f ./frontend/Dockerfile.dev ./frontend
 
 script:
   - docker run -e CI=true hyoukim/react-test-app npm run test
