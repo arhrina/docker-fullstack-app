@@ -1,0 +1,23 @@
+language: generic
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t hyoukim/docker-fullstack-app -f ./frontend/Dockerfile.dev
+
+script:
+  - docker run -e CI=true hyoukim/react-test-app npm run test
+
+after success:
+  - docker build -t hyoukim/docker-frontend    ./frontend
+  - docker build -t hyoukim/docker-backend     ./backend
+  - docker build -t hyoukim/nginx              ./nginx
+
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin # 도커허브 로그인하는 정보값을 환경변수로 지정. Travis CI more option-settings에 Environment Variables에 환경변수 추가
+
+  - docker push hyoukim/docker-frontend
+  - docker push hyoukim/docker-backend
+  - docker push hyoukim/nginx
