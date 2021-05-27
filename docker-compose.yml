@@ -32,7 +32,7 @@ services:
         volumes: 
             - /app/node_modules
             - ./backend:/app
-        environtment: # AWS RDB에서 생성하는 mysql을 활용하기 위한 환경변수값
+        environment: # AWS RDB에서 생성하는 mysql을 활용하기 위한 환경변수값
             MYSQL_HOST: mysql
             MYSQL_USER: user
             MYSQL_ROOT_PASSWORD: test7777

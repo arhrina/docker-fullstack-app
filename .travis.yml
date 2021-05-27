@@ -21,3 +21,14 @@ after success:
   - docker push hyoukim/docker-frontend
   - docker push hyoukim/docker-backend
   - docker push hyoukim/nginx
+
+deploy:
+  provider: elasticbeanstalk # 외부 서비스 표시
+  region: "ap-northeast-2" # AWS의 물리적 위치. URL에 존재
+  app: "docker-fullstack-app"
+  env: Dockerfullstackapp-env
+  bucket_name: elasticbeanstalk-ap-northeast-2-116047828143
+  bucket_path: "docker-fullstack-app"
+
+  on:
+    branch: master

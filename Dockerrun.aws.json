@@ -5,21 +5,21 @@
         // 배열 각각이 하나의 컨테이너에 대한 정의값
         {
             "name": "frontend",
-            "image": "hyoukim/docker-frontend",
+            "image": "arhrina/docker-frontend",
             "hostname": "frontend", // docker-compose를 이용할 때 사용할 hostname. 다른 컨테이너에서 이를 참조로 접근
             "essential": false, // 컨테이너가 실패할 경우 이후 다른 작업까지 전부 중지하는 옵션
             "memory": 128
         },
         {
             "name": "backend",
-            "image": "hyoukim/docker-backend",
+            "image": "arhrina/docker-backend",
             "hostname": "backend",
             "essential": false,
             "memory": 128
         },
         {
             "name": "nginx",
-            "image": "hyoukim/nginx",
+            "image": "arhrina/nginx",
             "hostname": "nginx",
             "essential": true,
             "portMappings": [
