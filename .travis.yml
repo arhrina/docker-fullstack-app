@@ -32,3 +32,7 @@ deploy:
 
   on:
     branch: master
+
+  # travis com의 환경변수에서 key값을 가져와서 aws에 접근
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
