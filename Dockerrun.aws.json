@@ -1,13 +1,12 @@
 {
-    "AWSEBDockerrunVersion": 2, // Dockerrun 버전 지정
+    "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [
-
-        // 배열 각각이 하나의 컨테이너에 대한 정의값
+        
         {
             "name": "frontend",
             "image": "arhrina/docker-frontend",
-            "hostname": "frontend", // docker-compose를 이용할 때 사용할 hostname. 다른 컨테이너에서 이를 참조로 접근
-            "essential": false, // 컨테이너가 실패할 경우 이후 다른 작업까지 전부 중지하는 옵션
+            "hostname": "frontend",
+            "essential": false,
             "memory": 128
         },
         {
@@ -28,7 +27,7 @@
                     "containerPort": 80
                 }
             ],
-            "links": ["frontend", "backend"], // 연결할 컨테이너의 목록. 연결된 컨테이너는 서로를 검색하고 통신가능
+            "links": ["frontend", "backend"],
             "memory": 128
         }
     ]
